@@ -1,0 +1,95 @@
+<app-header></app-header>
+<app-content></app-content>
+<app-footer></app-footer>
+
+
+<!-- data binding -->
+<h3>Data Binding</h3>
+<div style = "text-align:center"> 
+   <h1> Welcome to {{title}}. </h1> 
+</div>
+<p>Calculation is : {{ numberA + numberB }} </p>
+<p>Addition is : {{ addTwoNumbers() }} </p>
+<div> Months : 
+   <select> 
+      <option *ngFor = "let i of months">{{i}}</option> 
+   </select> 
+</div> 
+
+
+<div> 
+   <span *ngIf = "isavailable; then condition1 else condition2">
+      Condition is valid.
+   </span> 
+   <ng-template #condition1>Condition is valid</ng-template> 
+   <ng-template #condition2>Condition is invalid</ng-template> 
+</div>
+
+<!-- Text will be displayed on the basis of the isPresent variable. -->
+  <div style="padding-top: 30px" *ngIf="isPresent">
+    <span>Statement is true.</span>
+    <p>Show me because isPresent is set to true.</p>
+  </div>
+<h2>Two-Way Data Binding</h2>
+<p><input [(ngModel)]="fullName" /></p>    
+<p> {{fullName}} </p> 
+<!-- data binding -->
+<!-- property binding -->
+<h3>Property Binding</h3>
+<h2 [textContent]="title"></h2>
+<p><img [src]="imgUrl" /></p>
+<!-- property binding -->
+<!-- event binding -->
+<h3>Event Binding</h3>
+<div>
+   <span *ngIf = "isavailable; then condition1 else condition2">
+      Condition is valid.
+   </span>
+   <!-- templete binding -->
+   <ng-template #condition1>Condition is valid</ng-template>
+   <ng-template #condition2>Condition is invalid</ng-template>
+   <!-- templete binding -->
+</div>
+<button (click) = "myClickFunction($event)">
+   Click Me
+</button>
+<div> Months :
+   <select (change) = "changemonths($event)">
+      <option *ngFor = "let i of months">{{i}}</option>
+   </select>
+</div>
+<h2>Event Filtering Demo</h2>  
+<p><input (keyup)="onPressEnter($event)" />  <!-- write and press enter --></p>
+<h3>On Press Enter</h3>
+<p><input (keyup.enter)="onPressEnter($event)" />  </p>
+ 
+<!-- event binding -->
+<!-- services -->
+<h3>Services</h3>
+{{todaydate}} 
+<app-servicescomp></app-servicescomp>
+
+<!-- services -->
+<!-- Pipe -->
+<h3>Uppercase Pipe</h3> 
+<b>{{title | uppercase}}</b>
+<br/> 
+      
+<h3>Lowercase Pipe</h3> 
+<b>{{title | lowercase}}</b> 
+<h3>Currency Pipe</h3> 
+<b>{{6589.23 | currency:"USD"}}</b>
+<br/> 
+
+<b>{{6589.23 | currency:"USD":true}}</b> 
+// Boolean true is used to get the sign of the currency. 
+<h3>Date pipe</h3> 
+<b>{{todaydate | date:'dd-mm-yyyy'}}</b>
+<br/> 
+      
+<b>{{todaydate | date : 'shortTime'}}</b> 
+<h3>Decimal Pipe</h3> 
+<b>{{ 454.78787814 | number: '3.4-4' }}</b> 
+// 3 is for main integer, 4 -4 are for integers to be displayed. 
+<!-- Pipe -->
+<router-outlet></router-outlet>
